@@ -7,6 +7,13 @@ require "error_checking"
 module AmazonBundler
   module_function
 
+  def create_bundle_link(product_array: [], affiliate_id: nil)
+    ErrorChecking.product_array_valid?(product_array)
+    affiliate_info = affiliate_id ? "AssociateTag=#{affiliate_id}&" : ""
+    products_url = convert_products_array_to_url(product_array)
+    "#{base_url}#{affiliate_info}#{products_url}"
+  end
+
   def base_url
     "https://www.amazon.com/gp/aws/cart/add.html?"
   end
@@ -37,12 +44,5 @@ module AmazonBundler
   def offer(product)
     offer_id = product[:offer_id].to_s
     offer_id.empty? ? "" : "OfferListingId.#{product[:index]}=#{offer_id}"
-  end
-
-  def create_bundle_link(product_array: [], affiliate_id: nil)
-    ErrorChecking.product_array_valid?(product_array)
-    affiliate_info = affiliate_id ? "AssociateTag=#{affiliate_id}&" : ""
-    products_url = convert_products_array_to_url(product_array)
-    "#{base_url}#{affiliate_info}#{products_url}"
   end
 end

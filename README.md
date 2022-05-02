@@ -1,11 +1,7 @@
 # AmazonBundler
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/amazon_bundler`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+AmazonBundler provides a simple way to generate Amazon Add to Cart URLs, enabling users to add multiple items to their cart with one click.
 
 ## Installation
-
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -21,11 +17,35 @@ Or install it yourself as:
     $ gem install amazon_bundler
 
 ## Usage
-Feed the bundler a hash of Amazon Product ASINs, Quantities, and OfferIDs (Optional) and it will give you back a link to add all items to your cart with one click. Optionally, you can also give it your Amazon Associate ID and it will give you referral credit.
+AmazonBundler takes an array of product hashes. A product hash must have an **asin** and a **quantity**. It may also take an **offer_id**, but this is *optional*.
+
+In addition, you can provide your affiliate link, to get receive your affiliate credit.
 
 ### Example
 ```
-AmazonBundler.create_bundle_link(product_hash: product_hash, affiliate_id: '666666')
+require 'amazon_bundler'
+
+product_array = [
+  {
+    asin: 'B08XTJG6PQ',
+    quantity: 1
+  },
+  {
+    asin: 'B07GPFDL1K',
+    quantity: 2
+  },
+  {
+    asin: 'B07MK1N7P6',
+    quantity: 2
+  },
+  {
+    asin: 'B00V3MOMNA',
+    quantity: 1,
+    offer_id: 'Z23WCMaJHdbtXgLg2BaB4YNayMTs4SDiq5lHXoOUGpZe'
+  }
+]
+
+puts AmazonBundler.create_bundle_link(product_array: product_array, affiliate_id: ENV['YOUR_AFFILIATE_CODE'])
 ```
 
 ## Development
