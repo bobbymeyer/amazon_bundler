@@ -19,7 +19,7 @@ Or install it yourself as:
 ## Usage
 AmazonBundler takes an array of product hashes. A product hash must have an **asin** and a **quantity**. It may also take an **offer_id**, but this is *optional*.
 
-In addition, you can provide your affiliate link, to get receive your affiliate credit.
+In addition, you can provide your affiliate link *(optional)*, to get receive your affiliate credit.
 
 ### Example
 ```
