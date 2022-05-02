@@ -21,8 +21,12 @@ Or install it yourself as:
     $ gem install amazon_bundler
 
 ## Usage
+Feed the bundler a hash of Amazon Product ASINs, Quantities, and OfferIDs (Optional) and it will give you back a link to add all items to your cart with one click. Optionally, you can also give it your Amazon Associate ID and it will give you referral credit.
 
-TODO: Write usage instructions here
+### Example
+```
+AmazonBundler.create_bundle_link(product_hash: product_hash, affiliate_id: '666666')
+```
 
 ## Development
 

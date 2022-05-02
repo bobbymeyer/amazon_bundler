@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
+require "pry"
 require "amazon_bundler"
 
 RSpec.configure do |config|
